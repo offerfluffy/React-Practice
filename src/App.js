@@ -1,25 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+
+// Component is function that can return JSX and have some behaviour
+// !!! Capital letter for components !!!
+
+
+const Header = () => {
+  return <h2>Hello World</h2>;
+};
+
+// Component can be Class
+
+// extends React.Component
+class Field extends Component {
+  // need to have method render
+  render() {
+    const holder = "Enter here Class";
+    const styledField = {
+      width: "300px",
+    };
+
+    return <input type="text" placeholder={holder} style={styledField} />;
+  }
+}
+
+const FieldFunction = () => {
+  const holder = "Enter here Function";
+  const styledField = {
+    width: "300px",
+  };
+
+  // can interpolate inside attribute (style expects obj)
+  return <input type="text" placeholder={holder} style={styledField} />;
+};
+
+function Btn() {
+  const text = "Log in";
+  const logged = true;
+
+  // can use Expressions inside interpolation JSX
+  // can use trenary operator
+  return <button>{logged ? "Enter" : text}</button>;
+
+  // // can use function call
+  // const res = () => {
+  //   return "Log in";
+  // };
+
+  // // or another element
+  // const p = <p>{res()}</p>;
+  // return <button>{p}</button>;
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <FieldFunction />
+      <Field />
+      <Btn />
     </div>
   );
 }
 
+export { Header };
 export default App;

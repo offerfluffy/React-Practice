@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { Header } from "./App";
 
 // const elem = <h2>Hello World!</h2>;
 // Babel converts JSX into code below (everyone uses JSX)
@@ -33,4 +34,8 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // Components must be write with capital letter
-root.render(<App />);
+// Component is block of UI, can have own state and behaviour (independt and can be reused and exported)
+// Element is structured part of component (immutable, can only be rerendered)
+root.render(
+<App />
+);
