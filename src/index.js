@@ -1,8 +1,8 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { Header } from "./App";
+// import { Header } from "./App";
 
 // const elem = <h2>Hello World!</h2>;
 // Babel converts JSX into code below (everyone uses JSX)
@@ -36,6 +36,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // Components must be write with capital letter
 // Component is block of UI, can have own state and behaviour (independt and can be reused and exported)
 // Element is structured part of component (immutable, can only be rerendered)
+
+
+// StrictMode is like "use strict"
+// activates some additional checks
+// helps to find unsafe and depcrecated constructions and some sideEffetcs
+// only in dev mode 
 root.render(
-<App />
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
