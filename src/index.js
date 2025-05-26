@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// const elem = <h2>Hello World!</h2>;
+// Babel converts JSX into code below (everyone uses JSX)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const elem = React.createElement(
+//   "h2",
+//   { className: "greeting" },
+//   "Hello World!"
+// );
+
+// const text = "Hello World";
+
+// const elem = (
+//   // use parentheses when multiple line of JSX code
+//   // wrap into parent element
+
+//   // can intorpolate everything except object (because converts into string)
+//   // remeber to close tags
+//   // use camelCase for attributes (!!! className, htmlFor !!!)
+//   <div>
+//     <h2 className="text">
+//       Text: {text} Addition: {2 + 2} Array: {[2, 2]}
+//     </h2>
+//     <input type="text" />
+//     <button>Click</button>
+//   </div>
+// );
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Components must be write with capital letter
+root.render(<App />);
