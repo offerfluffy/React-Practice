@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./App.css";
+import State from "./State";
 
 // Component is function that can return JSX and have some behaviour
 // !!! Capital letter for components !!!
@@ -55,10 +56,7 @@ function Btn() {
 function App() {
   return (
     <div className="App">
-      <Header />
-      <FieldFunction />
-      <Field />
-      <Btn />
+      <State count={0}/>
     </div>
   );
 }
