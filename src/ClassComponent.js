@@ -12,8 +12,8 @@ class ClassComponent extends Component {
     this.state = {
       years: 27,
       text: "years",
-      role: "", // Stores user input from the form
-      color: "", // Controls text color dynamically
+      role: "",
+      color: "", 
     };
 
     // 🔁 THREE WAYS TO BIND `this` in event handlers:
@@ -33,7 +33,6 @@ class ClassComponent extends Component {
   // - Bind it manually
   // - Or use an arrow function in the render method to preserve context
   nextYear(color) {
-    // Increments years and sets a new color
     // These two setState calls could be combined for optimization
     this.setState((prevState) => ({ years: prevState.years + 1 }));
     this.setState({ color: color });
@@ -44,7 +43,6 @@ class ClassComponent extends Component {
   // So `this` inside refers to the instance of the class.
   // This avoids the need to bind manually.
   commitInputChanges = (e) => {
-    // Updates `role` in state as user types
     this.setState({ role: e.target.value });
   };
 
