@@ -1,10 +1,10 @@
 import { Component } from "react";
 import "./App.css";
 import State from "./State";
+import ClassComponent from "./ClassComponent";
 
 // Component is function that can return JSX and have some behaviour
 // !!! Capital letter for components !!!
-
 
 const Header = () => {
   return <h2>Hello World</h2>;
@@ -56,7 +56,8 @@ function Btn() {
 function App() {
   return (
     <div className="App">
-      <State count={0}/>
+      <State count={0} />
+      <ClassComponent name="Kyrylo" surname="Park" />
     </div>
   );
 }
