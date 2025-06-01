@@ -1,4 +1,8 @@
 import { Component } from "react";
+import { Wrapper, Count, ButtonsWrapper, Button } from "./styled-components";
+
+// ✅ Just import and use styled components as regular React elements
+// Props like className, children work normally
 
 class State extends Component {
   constructor(props) {
@@ -26,15 +30,15 @@ class State extends Component {
 
   render() {
     return (
-      <div>
-        <div>{this.state.count}</div>
-        <div>
-          <button onClick={this.increment}>INC</button>
-          <button onClick={this.decrement}>DEC</button>
-          <button onClick={this.random}>RND</button>
-          <button onClick={this.reset}>RES</button>
-        </div>
-      </div>
+      <Wrapper className={this.props.className}>
+        <Count>{this.state.count}</Count>
+        <ButtonsWrapper>
+          <Button onClick={this.increment}>INC</Button>
+          <Button onClick={this.decrement}>DEC</Button>
+          <Button onClick={this.random}>RND</Button>
+          <Button as="a" onClick={this.reset}>RES</Button>
+        </ButtonsWrapper>
+      </Wrapper>
     );
   }
 }
