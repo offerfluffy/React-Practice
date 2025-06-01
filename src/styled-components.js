@@ -39,3 +39,16 @@ const Button = styled.button`
 `;
 
 export { Wrapper, Count, ButtonsWrapper, Button };
+
+
+// function myTag(strings, ...values) {
+//   console.log("Strings:", strings);
+//   console.log("Values:", values);
+// }
+
+// const lang = "JavaScript";
+// myTag`I love ${lang}`;
+
+// // OUTPUT:
+// // Strings: ["I love ", ""]
+// // Values: ["JavaScript"]
