@@ -1,85 +1,72 @@
-import { Component } from "react";
-import "./App.css";
-import State from "./State";
-import ClassComponent from "./ClassComponent";
-import styled from "styled-components";
+import { Component } from "react"; // Import React Component class to create class components
+import State from "./State"; // Import a class component named State
+import ClassComponent from "./ClassComponent"; // Another class component
+import styled from "styled-components"; // Library for styling React components with CSS-in-JS
+import Dynamic from "./Dynamic"; // Functional component that styles its children
+import BootstrapTest from "./BootstrapTest"; // Component to demonstrate React-Bootstrap layout
 
-// // Component is function that can return JSX and have some behaviour
-// // !!! Capital letter for components !!!
+// -----------------------------------
+// What is a styled-component?
+// -----------------------------------
+// styled-components is a library that lets you write CSS styles directly inside JS files
+// You create "styled" versions of React components or HTML elements that include styles
+// These styles are scoped only to that component, avoiding conflicts and simplifying CSS management
 
-// const Header = () => {
-//   return <h2>Hello World</h2>;
-// };
+// -----------------------------------
+// Extending a Class Component with Styles
+// -----------------------------------
+// Here we take the existing State component (which is a class component) 
+// and create a new styled version of it without modifying the original.
+// This is useful if you want to add styles to components you don't want to or can't change.
 
-// // Component can be Class
-
-// // extends React.Component
-// class Field extends Component {
-//   // need to have method render
-//   render() {
-//     const holder = "Enter here Class";
-//     const styledField = {
-//       width: "300px",
-//     };
-
-//     return <input type="text" placeholder={holder} style={styledField} />;
-//   }
-// }
-
-// const FieldFunction = () => {
-//   const holder = "Enter here Function";
-//   const styledField = {
-//     width: "300px",
-//   };
-
-//   // can interpolate inside attribute (style expects obj)
-//   return <input type="text" placeholder={holder} style={styledField} />;
-// };
-
-// function Btn() {
-//   const text = "Log in";
-//   const logged = true;
-
-//   // can use Expressions inside interpolation JSX
-//   // can use trenary operator
-//   return <button>{logged ? "Enter" : text}</button>;
-
-//   // // can use function call
-//   // const res = () => {
-//   //   return "Log in";
-//   // };
-
-//   // // or another element
-//   // const p = <p>{res()}</p>;
-//   // return <button>{p}</button>;
-// }
-
-// ✅ Styled component with dynamic styles based on props
-// 🔄 Inherits from 'State' class component – allows styling it without modifying original source
-// 🎯 Useful when you want to enhance 3rd-party or legacy components with CSS
+// styled(State) means "wrap the State component and add styles to it"
 const StateWithStyles = styled(State)`
   background-color: lightblue;
 
-  // 🎨 Uses 'color' prop or falls back to red
-  color: ${props => props.color || "red"};
+  // This line sets text color based on a prop called 'color'. 
+  // If no 'color' prop is passed, it defaults to "red".
+  color: ${(props) => props.color || "red"};
 
-  // 🎯 Ternary logic for conditional padding
-  padding: ${props => props.active ? "15px" : ""};
+  // Conditionally add padding if the 'active' prop is true
+  padding: ${(props) => (props.active ? "15px" : "")};
 `;
 
-// ✅ Usage example:
-// <StateWithStyles color="blue" active />
+// -----------------------------------
+// Functional Component - App
+// -----------------------------------
+// This is the main component rendered on the page.
+// It returns JSX, which looks like HTML but is actually JavaScript that React uses to render UI.
 
-
+// JSX allows us to use custom components as tags with props, similar to HTML attributes.
 function App() {
   return (
     <div>
+      {/* Using the original State component with a count prop */}
       <State count={0} />
-      <StateWithStyles color="blue" active count={0}/>
+
+      {/* Using the styled version with dynamic props color and active */}
+      <StateWithStyles color="blue" active count={0} />
+
+      {/* Rendering ClassComponent with two string props 'name' and 'surname' */}
       <ClassComponent name="Kyrylo" surname="Park" />
+
+      {/* BootstrapTest creates a 2-column layout, left and right sides accept any JSX as props */}
+      <BootstrapTest
+        left={
+          <Dynamic color="primary">
+            {/* Children inside Dynamic are React elements - h2 tags */}
+            <h2>Hello Left</h2>
+            <h2>Hello 2 Left</h2>
+          </Dynamic>
+        }
+        right={
+          <Dynamic color="secondary">
+            <h2>Hello Right</h2>
+          </Dynamic>
+        }
+      />
     </div>
   );
 }
 
-// export { Header };
 export default App;
