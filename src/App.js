@@ -4,6 +4,7 @@ import ClassComponent from "./ClassComponent"; // Another class component
 import styled from "styled-components"; // Library for styling React components with CSS-in-JS
 import Dynamic from "./Dynamic"; // Functional component that styles its children
 import BootstrapTest from "./BootstrapTest"; // Component to demonstrate React-Bootstrap layout
+import { Count } from "./styled-components";
 
 // -----------------------------------
 // What is a styled-component?
@@ -15,7 +16,7 @@ import BootstrapTest from "./BootstrapTest"; // Component to demonstrate React-B
 // -----------------------------------
 // Extending a Class Component with Styles
 // -----------------------------------
-// Here we take the existing State component (which is a class component) 
+// Here we take the existing State component (which is a class component)
 // and create a new styled version of it without modifying the original.
 // This is useful if you want to add styles to components you don't want to or can't change.
 
@@ -23,7 +24,7 @@ import BootstrapTest from "./BootstrapTest"; // Component to demonstrate React-B
 const StateWithStyles = styled(State)`
   background-color: lightblue;
 
-  // This line sets text color based on a prop called 'color'. 
+  // This line sets text color based on a prop called 'color'.
   // If no 'color' prop is passed, it defaults to "red".
   color: ${(props) => props.color || "red"};
 
@@ -38,14 +39,21 @@ const StateWithStyles = styled(State)`
 // It returns JSX, which looks like HTML but is actually JavaScript that React uses to render UI.
 
 // JSX allows us to use custom components as tags with props, similar to HTML attributes.
+
+// Using the State component with a "render prop":
+// - We pass an initial count of 0 via the "count" prop.
+// - We pass a function to the "render" prop that tells State *how* to display the count.
+// - This function receives the current count value and returns JSX (<Count>{count}</Count>).
+// - This pattern lets the parent control how the internal state is rendered.
+
 function App() {
   return (
     <div>
       {/* Using the original State component with a count prop */}
-      <State count={0} />
+      <State count={0} render={(count) => <Count>{count}</Count>} />
 
       {/* Using the styled version with dynamic props color and active */}
-      <StateWithStyles color="blue" active count={0} />
+      {/* <StateWithStyles color="blue" active count={0} /> */}
 
       {/* Rendering ClassComponent with two string props 'name' and 'surname' */}
       <ClassComponent name="Kyrylo" surname="Park" />

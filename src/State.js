@@ -31,12 +31,14 @@ class State extends Component {
   render() {
     return (
       <Wrapper className={this.props.className}>
-        <Count>{this.state.count}</Count>
+        {this.props.render(this.state.count)}
         <ButtonsWrapper>
           <Button onClick={this.increment}>INC</Button>
           <Button onClick={this.decrement}>DEC</Button>
           <Button onClick={this.random}>RND</Button>
-          <Button as="a" onClick={this.reset}>RES</Button>
+          <Button as="a" onClick={this.reset}>
+            RES
+          </Button>
         </ButtonsWrapper>
       </Wrapper>
     );
